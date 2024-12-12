@@ -18,13 +18,15 @@ use Symfony\Component\Serializer\Exception\LogicException;
 
 /**
  * @author Jordi Boggiano <j.boggiano@seld.be>
+ *
+ * @template TData
  */
 interface NormalizerInterface
 {
     /**
      * Normalizes data into a set of arrays/scalars.
      *
-     * @param mixed       $data    Data to normalize
+     * @param TData       $data    Data to normalize
      * @param string|null $format  Format the normalization result will be encoded as
      * @param array       $context Context options for the normalizer
      *
@@ -41,8 +43,8 @@ interface NormalizerInterface
     /**
      * Checks whether the given class is supported for normalization by this normalizer.
      *
-     * @param mixed       $data   Data to normalize
-     * @param string|null $format The format being (de-)serialized from or into
+     * @param TData|mixed   $data   Data to normalize
+     * @param string|null   $format The format being (de-)serialized from or into
      */
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool;
 
